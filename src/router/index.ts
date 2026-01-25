@@ -1,7 +1,7 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
@@ -84,7 +84,7 @@ router.onError((error, to) => {
   const errors = ['Failed to fetch dynamically imported module', 'Unable to preload CSS']
 
   if (errors.some((e) => error.message.includes(e))) {
-    window.location = (import.meta.env.BASE_URL + to.fullPath) as string & Location
+    window.location = to.fullPath as string & Location
   }
 })
 
